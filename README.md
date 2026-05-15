@@ -1,4 +1,5 @@
-{public-addr} {public-port} {ip4p} {private-port} {protocol} {private-addr} {server-addr} {server-port}
+public-addr="$1" public-port="$2" ip4p="$3" private-port"$4"; protocol="$5"; private-addr="$6" server-addr="$7"; server-port="$8"
+
 
 ```sh
 natmap -s turn.cloudflare.com -h g.cn -t 192.168.1.200 -p 80 -b 8000 -e /etc/natmap/upnp.sh
