@@ -1,6 +1,5 @@
-
-
 ```sh
+sudo mkdir -p /etc/natmap && sudo tee /etc/natmap/upnp.sh > /dev/null << 'EOF'
 #!/bin/sh
 private-port="$4"; protocol="$5"; private-addr="$6"; server-addr="$7"; server-port="$8"
 curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
@@ -33,8 +32,10 @@ curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
       <NewLeaseDuration>0</NewLeaseDuration>
     </u:AddPortMapping>
   </s:Body>
-</s:Envelope>"
+</s:Envelope>
+EOF
 
+sudo chmod +x /etc/natmap/upnp.sh
 ```
 
 ```sh
