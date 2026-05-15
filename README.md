@@ -34,8 +34,8 @@ curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
   </s:Body>
 </s:Envelope>
 EOF
-
 sudo chmod +x /etc/natmap/upnp.sh
+
 ```
 
 ```sh
