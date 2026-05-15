@@ -2,7 +2,7 @@
 
 ```sh
 #!/bin/sh
-public-addr="$1" public-port="$2" ip4p="$3" private-port"$4"; protocol="$5"; private-addr="$6" server-addr="$7"; server-port="$8"
+private-port"$4"; protocol="$5"; private-addr="$6" server-addr="$7"; server-port="$8"
 curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
      -H "Content-Type: text/xml; charset=utf-8" \
      -H "SOAPAction: \"urn:schemas-upnp-org:service:WANIPConnection:1#DeletePortMapping\"" \
