@@ -1,7 +1,7 @@
 ```sh
 sudo mkdir -p /etc/natmap && sudo tee /etc/natmap/upnp.sh > /dev/null << 'EOF'
 #!/bin/sh
-private-port="$4"; protocol="$5"; private-addr="$6"; server-addr="$7"; server-port="$8"
+private-port="$4"; protocol="$5"; private-addr="$6"; server-addr="192.168.1.200"; server-port="80"
 curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
      -H "Content-Type: text/xml; charset=utf-8" \
      -H "SOAPAction: \"urn:schemas-upnp-org:service:WANIPConnection:1#DeletePortMapping\"" \
