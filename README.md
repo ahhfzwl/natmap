@@ -1,7 +1,7 @@
 ```sh
 sudo mkdir -p /etc/natmap && sudo tee /etc/natmap/upnp.sh > /dev/null << 'EOF'
 #!/bin/sh
-private-port="$4"; protocol="$5"; private-addr="$6"; server-addr="192.168.1.200"; server-port="80"
+private_port="$4"; protocol="$5"; server_addr="192.168.1.200"; server_port="80"
 curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
      -H "Content-Type: text/xml; charset=utf-8" \
      -H "SOAPAction: \"urn:schemas-upnp-org:service:WANIPConnection:1#DeletePortMapping\"" \
@@ -10,7 +10,7 @@ curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
   <s:Body>
     <u:DeletePortMapping xmlns:u=\"urn:schemas-upnp-org:service:WANIPConnection:1\">
       <NewRemoteHost></NewRemoteHost>
-      <NewExternalPort>${private-port}</NewExternalPort>
+      <NewExternalPort>${private_port}</NewExternalPort>
       <NewProtocol>$(echo "$protocol" | tr 'a-z' 'A-Z')</NewProtocol>
     </u:DeletePortMapping>
   </s:Body>
@@ -23,9 +23,9 @@ curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
   <s:Body>
     <u:AddPortMapping xmlns:u=\"urn:schemas-upnp-org:service:WANIPConnection:1\">
       <NewRemoteHost></NewRemoteHost>
-      <NewInternalClient>${server-addr}</NewInternalClient>
-      <NewInternalPort>${server-port}</NewInternalPort>
-      <NewExternalPort>${private-port}</NewExternalPort>
+      <NewInternalClient>${server_addr}</NewInternalClient>
+      <NewInternalPort>${server_port}</NewInternalPort>
+      <NewExternalPort>${private_port}</NewExternalPort>
       <NewProtocol>$(echo "$protocol" | tr 'a-z' 'A-Z')</NewProtocol>
       <NewEnabled>1</NewEnabled>
       <NewPortMappingDescription>Natter-UPnP</NewPortMappingDescription>
@@ -35,7 +35,6 @@ curl -s -X POST "http://192.168.1.1:52869/upnp/control/WANIPConn1" \
 </s:Envelope>
 EOF
 sudo chmod +x /etc/natmap/upnp.sh
-
 ```
 
 ```sh
